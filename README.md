@@ -1,0 +1,1 @@
+Pinned is a web-application that assists travelers/tourists to search for different places based on the ratings and description provided by other travelers or locals to find the ideal location for their travel and to have a good experience
