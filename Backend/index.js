@@ -3,7 +3,7 @@ const mongoose= require("mongoose");
 const dotenv= require("dotenv");
 const app= express();
 const pinRoute= require("./Routes/pins")
-const userRoute=require("./Routes/pins")
+const userRoute=require("./Routes/users")
 
 dotenv.config();
 app.use(express.json());
@@ -15,6 +15,6 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopolo
 app.use("/api/users", userRoute);
 app.use("/api/pins", pinRoute);
 
-app.listen(8800, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log("backend started");
 })

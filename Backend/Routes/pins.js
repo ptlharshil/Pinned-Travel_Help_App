@@ -1,4 +1,4 @@
-const router=require("express").Router
+const router=require("express").Router()
 const Pin = require("../Models/Pin")
 
 router.post("/", async (req,res)=>{
@@ -10,7 +10,7 @@ router.post("/", async (req,res)=>{
         res.status(500).json(err);
     }
 })
-router.length("/", async (req,res)=>{
+router.get("/", async (req,res)=>{
     try{
         const pins=await Pin.find();
         res.status(200).json(pins);

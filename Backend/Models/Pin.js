@@ -2,25 +2,25 @@ const mongoose=require("mongoose");
 
 const PinSchema=new mongoose.Schema({
     username:{
-        type:string,
+        type:String,
         require: true,
         
     },
     title:{
-        type:string,
+        type:String,
         require:true,
         min:3,
     },
     desc:{
-        type:string,
-        require=true,
+        type:String,
+        require:true,
         
     },
     rating:{
         type:Number,
         require:true,
         min:0,
-        max=5,
+        max:5,
     },
     lat:{
         type:Number,
