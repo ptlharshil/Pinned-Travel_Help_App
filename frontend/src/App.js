@@ -4,14 +4,20 @@ import {PinDrop,Star} from "@material-ui/icons";
 import "./app.css";
 import axios from "axios";
 import {format} from "timeago.js";
+import Register from './components/Register';
+import Login from './components/Login';
+
 function App() {
-  const currentUser="john";
+  const myStorage=window.localStorage;
+  const [currentUser,setCurrentUser]=useState(myStorage.getItem("user"));
   const [pins,setPins]= useState([])
   const [currentPlaceId, setCurrentPlaceId]=useState(null);
   const [newPlace,setNewPlace] =useState(null);
   const [title,setTitle]=useState(null);
   const [desc,setDesc]=useState(null);
   const [rating,setRating]=useState(0);
+  const [showRegister, setShowRegister]=useState(false);
+  const [showLogin, setShowLogin]=useState(false);
   const [viewport, setViewport] = useState({
     width: "100vw",
     height: "100vh",
@@ -51,6 +57,7 @@ function App() {
       username:currentUser,
       title,
       desc,
+      rating,
       lat:newPlace.lat,
       long:newPlace.long,
 
@@ -67,6 +74,11 @@ function App() {
     }
   };
 
+  const handleLogout=()=>{
+    myStorage.removeItem("user");
+    setCurrentUser(null);
+  }
+
   return (
     <div className="App">
       <ReactMapGL
@@ -75,12 +87,12 @@ function App() {
       onViewportChange={nextViewport => setViewport(nextViewport)}
       mapStyle="mapbox://styles/ptlharshil/ckox30sx810jc17s66viwy6hx" 
       onDblClick={handleAddClick} 
-      transitionDuration="200">
+      transitionDuration="20">
        {pins.map(p=>(
 
       <>
        
-        <Marker latitude={p.lat} longitude={p.long} offsetLeft={-20} offsetTop={-10}>
+        <Marker latitude={p.lat} longitude={p.long} offsetLeft={-viewport.zoom*7} offsetTop={viewport.zoom*3.5}>
            <PinDrop style={{color:'slateblue',fontSize:viewport.zoom*10,cursor:'pointer'}}
             onClick={()=>handleMarkerClick(p._id,p.lat,p.long)}
            />
@@ -101,11 +113,7 @@ function App() {
             <p className="desc">{p.desc}</p>
             <label>Rating</label>
             <div className="stars">
-              <Star className="star"/>
-              <Star className="star"/>
-              <Star className="star"/>
-              <Star className="star"/>
-              <Star className="star"/>
+              {Array(p.rating).fill(<Star className="star"/>)}
             </div>
             <label>Information</label>
             <span className="username">Created by: {p.username}</span>
@@ -142,6 +150,16 @@ function App() {
              </div>
           </Popup>
           )}
+          {currentUser ? (<button className="button logout" onClick={handleLogout}>Logout</button>):(
+            <div className="buttons">
+              <button className="button login" onClick={()=>setShowLogin(true)}>Sign In</button>
+              <button className="button register" onClick={()=>setShowRegister(true)}>Sign Up</button>
+            </div>
+          )}
+          {showRegister && <Register setShowRegister={setShowRegister}/>}
+          {showLogin && <Login setShowLogin={setShowLogin} myStorage={myStorage} setCurrentUser={setCurrentUser}/>}
+          
+          
       </ReactMapGL>
     </div>
   );
