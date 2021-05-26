@@ -13,8 +13,8 @@ mongoose.connect(process.env.MONGO_URL, {useNewUrlParser: true, useUnifiedTopolo
     console.log("MongoDB is connected")
 }).catch((err)=>console.log(err));
 
-app.use("/api/users", userRoute);
-app.use("/api/pins", pinRoute);
+app.use("/users", userRoute);
+app.use("/pins", pinRoute);
 
 app.listen(process.env.PORT, ()=>{
     console.log("backend started");

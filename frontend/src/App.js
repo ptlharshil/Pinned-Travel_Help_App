@@ -29,8 +29,8 @@ function App() {
   useEffect(() => {
     const getPins=async ()=>{
        try{
-          const res=await axios.get("/pins");
-          setPins(res.data);
+          const allpins=await axios.get("/pins");
+          setPins(allpins.data);
        }catch(err)
        {
           console.log(err)
@@ -47,7 +47,8 @@ function App() {
   const handleAddClick=(e)=>{
       const [long,lat]=e.lngLat;
       setNewPlace({
-        lat,long,
+        lat:latitude,
+        long:longitude,
       });
   };
 
@@ -75,8 +76,8 @@ function App() {
   };
 
   const handleLogout=()=>{
-    myStorage.removeItem("user");
     setCurrentUser(null);
+    myStorage.removeItem("user");
   }
 
   return (
