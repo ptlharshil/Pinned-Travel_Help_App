@@ -1,55 +1,58 @@
-import React ,{useState,useRef}from 'react'
-import "./register.css"
-import {PinDrop,Cancel} from "@material-ui/icons"
-const axios=require('axios');
+import { Cancel, Room } from "@material-ui/icons";
+import axios from "axios";
+import { useRef, useState } from "react";
+import "./register.css";
 
-const Register = ({setShowRegister}) => {
-    const [success,setSuccess]=useState(false);
-    const [error, setError] = useState(false);
-    const nameRef = useRef();
-    const emailRef = useRef();
-    const passwordRef = useRef();
+export default function Register({ setShowRegister }) {
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(false);
+  const usernameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
-    const handleSubmit= async (e)=>{
-        e.preventDefault();
-        const newUser={
-            username:nameRef.current.value,
-            email:emailRef.current.value,
-            password:passwordRef.current.value,
-        };
-        try{
-            axios.post("/users/register",{data:newUser});
-            setError(false);
-            setSuccess(true);
-            
-        }
-        catch(err)
-        {
-            console.log(err.message)
-            setError(true);
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newUser = {
+      username: usernameRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
     };
-    return (
-        <div className="registerContainer">
-            <div className="logo">
-                <PinDrop/>
-                Pinned
-            </div>
-            <form onSubmit={handleSubmit}>
-                <input type="text" placeholder="Username" ref={nameRef}/>
-                <input type="email" placeholder="Email" ref={emailRef}/>
-                <input type="password" placeholder="Password" ref={passwordRef}/>
-                <button className="signupBtn">Sign Up</button>
-                {success &&
-                <span className="success">Successfull. You can Sign In now</span>
-                }       
-                {error && 
-                <span className="failure">Something went wrong</span>
-                }           
-            </form>
-            <Cancel className="registerCancel" onClick={()=>setShowRegister(false)}/>
-        </div>
-    )
-}
 
-export default Register
+    try {
+      await axios.post("/users/register", newUser);
+      setError(false);
+      setSuccess(true);
+    } catch (err) {
+      setError(true);
+    }
+  };
+  return (
+    <div className="registerContainer">
+      <div className="logo">
+        <Room className="logoIcon" />
+        <span>LamaPin</span>
+      </div>
+      <form onSubmit={handleSubmit}>
+        <input autoFocus placeholder="username" ref={usernameRef} />
+        <input type="email" placeholder="email" ref={emailRef} />
+        <input
+          type="password"
+          min="6"
+          placeholder="password"
+          ref={passwordRef}
+        />
+        <button className="registerBtn" type="submit">
+          Register
+        </button>
+        {success && (
+          <span className="success">Successfull. You can login now!</span>
+        )}
+        {error && <span className="failure">Something went wrong!</span>}
+      </form>
+      <Cancel
+        className="registerCancel"
+        onClick={() => setShowRegister(false)}
+      />
+    </div>
+  );
+}
