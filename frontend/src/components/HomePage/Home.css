@@ -1,0 +1,28 @@
+.home{
+    background-color: slateblue;
+    padding: 150px 0px 0px 150px;
+    align-items: center;
+
+}
+
+.title{
+    align-items: center;
+    padding-left:20px;
+    font-size: 100px;
+}
+.buttonExplore{
+    align-items: center;
+    padding-left: 120px;
+    margin-top: 50px;
+    font-size: 50px;
+    color:white;
+    cursor:pointer;
+}
+.loc{
+    color: tomato;
+
+}
+p{
+    padding-left: 120px;
+}
+
