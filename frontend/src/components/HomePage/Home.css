@@ -1,7 +1,11 @@
-.home{
+body{
     background-color: slateblue;
+}
+.home{
+    
     padding: 150px 0px 0px 150px;
     align-items: center;
+ 
 
 }
 
@@ -26,3 +30,40 @@ p{
     padding-left: 120px;
 }
 
+#earth {
+    margin-left:570px;
+    margin-top: -300px;
+    width: 400px;
+    height: 400px;
+    background: url(https://web.archive.org/web/20150807125159if_/http://www.noirextreme.com/digital/Earth-Color4096.jpg);
+    border-radius: 50%;
+    background-size: 610px;
+    box-shadow: inset 8px 36px 80px 36px rgb(0, 0, 0);
+    animation-name: rotate;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    -webkit-animation-name: rotate;
+       -webkit-animation-duration: 12s;
+       -webkit-animation-iteration-count: infinite;
+       -webkit-animation-timing-function: linear;
+
+  }
+  @keyframes rotate {
+    from {
+      background-position: 0px 0px;
+    }
+    to {
+      background-position: 610px 0px;
+    }
+  }
+  @-webkit-keyframes rotate {
+    from {
+      background-position: 0px 0px;
+    }
+    to {
+      background-position: 610px 0px;
+    }
+  }
+
+  
