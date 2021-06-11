@@ -9,7 +9,7 @@ const HomePage = () => {
         <>
         
         <div className="home" style={{ height: "100vh", width: "100%"}}>
-            
+           
             <h1 className="title"><Room className="loc"/><b>Pinned</b></h1>
             <p>
                 Your Travel Reviews App
@@ -18,16 +18,20 @@ const HomePage = () => {
                 Find your ideal vacation
             </p>
             
+            <div className="buttonExplore">
             <Link
             activeClass="active"
             to="Map"
             spy={true}
             smooth={true}
             duration={500}
-            className="buttonExplore" ><b>Explore</b>   
+             ><b>Explore</b>   
             </Link>
-            <div id="earth"></div>
-        </div>
+            </div>
+        </div>    
+            
+            <div id="earth" className="slideglobe"></div>
+        
         
 
         

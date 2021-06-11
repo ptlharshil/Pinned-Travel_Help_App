@@ -1,44 +1,57 @@
 body{
     background-color: slateblue;
+    margin: auto;
 }
 .home{
     
-    padding: 150px 0px 0px 150px;
+    padding: 150px 0px 0px 0px;
     align-items: center;
- 
+    margin:auto;
+    animation: slidein 1s ease-in;
 
 }
 
 .title{
     align-items: center;
-    padding-left:20px;
+    padding-left:160px;
     font-size: 100px;
 }
 .buttonExplore{
     align-items: center;
-    padding-left: 120px;
-    margin-top: 50px;
+    padding-left: 262px;
+    margin-top: 20px;
     font-size: 50px;
     color:white;
     cursor:pointer;
+    -webkit-animation-name: bounce;
+  animation-name: bounce;
+    -webkit-animation-duration: .5s;
+  animation-duration: .5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  -webkit-animation-iteration-count: infinite;
 }
 .loc{
     color: tomato;
 
 }
 p{
-    padding-left: 120px;
+    padding-left: 260px;
+    
 }
 
 #earth {
-    margin-left:570px;
-    margin-top: -300px;
+    margin-left:690px;
+    margin-top: -650px;
     width: 400px;
     height: 400px;
     background: url(https://web.archive.org/web/20150807125159if_/http://www.noirextreme.com/digital/Earth-Color4096.jpg);
     border-radius: 50%;
     background-size: 610px;
-    box-shadow: inset 8px 36px 80px 36px rgb(0, 0, 0);
+    box-shadow: inset 8px 20px 80px 20px rgb(0, 0, 0);
     animation-name: rotate;
     animation-duration: 12s;
     animation-iteration-count: infinite;
@@ -49,21 +62,72 @@ p{
        -webkit-animation-timing-function: linear;
 
   }
+
+  #earth:hover{
+    cursor: pointer;
+    transform-origin:left;
+    animation-name: spin;
+  }
+ 
+  
+
+ @keyframes spin{
+   from{
+     transform: scale3d(0.7,0.7,0.7) rotate(0deg);
+   }
+   50%{
+    transform: scale3d(0.5,0.5,0.5) rotate(180deg);
+   }
+   to{
+    transform: scale3d(0.7,0.7,0.7) rotate(360deg);
+   }
+ }
+  
+  @keyframes slidein{
+    0%{
+      transform: translate(-500px);
+    }
+    100%{
+      transform: translate(0);
+    }
+  }
+  
+
+  
   @keyframes rotate {
     from {
+      
       background-position: 0px 0px;
     }
     to {
+      
       background-position: 610px 0px;
     }
   }
   @-webkit-keyframes rotate {
     from {
+    
       background-position: 0px 0px;
     }
     to {
+    
       background-position: 610px 0px;
     }
   }
 
-  
+  @-webkit-keyframes bounce {
+    0%, 100% {
+      -webkit-transform: translateY(0);
+    }
+    50% {
+      -webkit-transform: translateY(-5px);
+    }
+  }
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-5px);
+    }
+  }  
