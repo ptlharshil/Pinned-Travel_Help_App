@@ -15,7 +15,7 @@
   }
   
   .desc {
-    font-size: 14px;
+    font-size: 12px;
   }
   
   .star {
@@ -57,7 +57,8 @@
   }
   
   textarea {
-    border: none;
+    border:none;
+    
     border-bottom: 1px solid gray;
   }
   

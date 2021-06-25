@@ -11,12 +11,12 @@ const HomePage = () => {
         <div className="home" style={{ height: "100vh", width: "100%"}}>
            
             <h1 className="title"><Room className="loc"/><b>Pinned</b></h1>
-            <p>
+            <h3>
                 Your Travel Reviews App
-            </p>
-            <p>
+            </h3>
+            <h3>
                 Find your ideal vacation
-            </p>
+            </h3>
             
             <div className="buttonExplore">
             <Link

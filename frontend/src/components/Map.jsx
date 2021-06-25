@@ -169,7 +169,9 @@ const Map = () => {
                   />
                   <label>Description</label>
                   <textarea
+                  
                     placeholder="Say us something about this place."
+                    autoFocus
                     onChange={(e) => setDesc(e.target.value)}
                   />
                   <label>Rating</label>
